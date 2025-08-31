@@ -43,7 +43,7 @@
 }
 
 .signup-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: transparent;
     backdrop-filter: blur(20px);
     border-radius: 20px;
     padding: 3rem 2rem;
