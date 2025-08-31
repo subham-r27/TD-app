@@ -27,7 +27,7 @@ function Signup() {
             return handleError('name, email and password are required');
         }
         try {
-            const response = await fetch("http://localhost:8080/auth/signup", {
+            const response = await fetch("https://td-app-api.vercel.app/auth/signup", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
