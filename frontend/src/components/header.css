@@ -1,0 +1,303 @@
+/* Enhanced Header Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Main header container */
+.header {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Video background wrapper */
+.video-background-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Background video */
+.header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(40%) contrast(120%);
+    transition: filter 0.3s ease;
+}
+
+/* Enhanced overlay gradient for better readability */
+.header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(12, 3, 51, 0.7) 0%, 
+        rgba(0, 66, 128, 0.6) 50%, 
+        rgba(0, 86, 179, 0.7) 100%
+    );
+    z-index: -1;
+}
+
+/* Content inside the header */
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content h1 {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 800;
+    margin-bottom: 2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background: linear-gradient(135deg, #ffffff, #bdedff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    animation: slideInDown 1s ease-out 0.8s both;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content a {
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    border: 3px solid #fff;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    white-space: nowrap;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease-out 1.2s both;
+}
+
+.content a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.content a:hover::before {
+    left: 100%;
+}
+
+.content a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: #bdedff;
+    color: #bdedff;
+}
+
+.content a:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* Enhanced responsive design */
+@media (max-width: 1200px) {
+    .content h1 {
+        font-size: clamp(2.5rem, 8vw, 6rem);
+    }
+    
+    .content a {
+        padding: 0.875rem 2.5rem;
+        font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 90vh;
+    }
+    
+    .content {
+        padding: 0 15px;
+        justify-content: center;
+    }
+    
+    .content h1 {
+        font-size: clamp(2rem, 8vw, 4rem);
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+    }
+    
+    .content a {
+        padding: 0.75rem 2rem;
+        font-size: 1.1rem;
+        border-width: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        height: 85vh;
+    }
+    
+    .content h1 {
+        font-size: clamp(1.75rem, 8vw, 3rem);
+        margin-bottom: 1rem;
+    }
+    
+    .content a {
+        padding: 0.625rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .header {
+        height: 100vh;
+    }
+    
+    .content h1 {
+        font-size: clamp(2rem, 6vw, 4rem);
+        margin-bottom: 1rem;
+    }
+    
+    .content a {
+        padding: 0.5rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .content h1 {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .content h1,
+    .content a {
+        animation: none;
+    }
+    
+    .content a:hover {
+        transform: none;
+    }
+    
+    .content a::before {
+        display: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .header::before {
+        background: linear-gradient(
+            135deg, 
+            rgba(0, 0, 0, 0.8) 0%, 
+            rgba(0, 66, 128, 0.7) 50%, 
+            rgba(0, 86, 179, 0.8) 100%
+        );
+    }
+}
+
+/* Focus states for accessibility */
+.content a:focus-visible {
+    outline: 3px solid #bdedff;
+    outline-offset: 3px;
+}
+
+/* Loading state for video */
+.header video:not([src]) {
+    background: linear-gradient(135deg, #004280, #0056b3);
+}
+
+/* Enhanced video controls for better UX */
+.header video::-webkit-media-controls {
+    display: none !important;
+}
+
+.header video::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Performance optimizations */
+.header {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.content h1,
+.content a {
+    will-change: transform, opacity;
+}

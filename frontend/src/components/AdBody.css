@@ -1,0 +1,262 @@
+/* Enhanced AdBody Styles */
+.ad-body-section {
+    width: 100%;
+    padding: 6rem 10%;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.ad-body-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 66, 128, 0.02) 0%, rgba(0, 86, 179, 0.02) 100%);
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.ad-body-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #2c3e50;
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ad-body-text::before {
+    content: '"';
+    font-size: 4rem;
+    color: #004280;
+    opacity: 0.3;
+    position: absolute;
+    top: -2rem;
+    left: -1rem;
+    font-family: Georgia, serif;
+}
+
+.ad-body-text::after {
+    content: '"';
+    font-size: 4rem;
+    color: #004280;
+    opacity: 0.3;
+    position: absolute;
+    bottom: -3rem;
+    right: -1rem;
+    font-family: Georgia, serif;
+}
+
+.ad-body-button {
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 3px solid #004280;
+    background: linear-gradient(135deg, #004280, #0056b3);
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 66, 128, 0.3);
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.ad-body-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.ad-body-button:hover::before {
+    left: 100%;
+}
+
+.ad-body-button:hover {
+    background: linear-gradient(135deg, #0056b3, #0066cc);
+    border-color: #0056b3;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 66, 128, 0.4);
+    color: #ffffff;
+}
+
+.ad-body-button:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Enhanced responsive design */
+@media (max-width: 1200px) {
+    .ad-body-section {
+        padding: 5rem 8%;
+    }
+    
+    .ad-body-text {
+        font-size: 1.2rem;
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ad-body-section {
+        padding: 4rem 5%;
+    }
+    
+    .ad-body-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        max-width: 100%;
+    }
+    
+    .ad-body-text::before,
+    .ad-body-text::after {
+        font-size: 3rem;
+    }
+    
+    .ad-body-text::before {
+        top: -1.5rem;
+        left: -0.5rem;
+    }
+    
+    .ad-body-text::after {
+        bottom: -2.5rem;
+        right: -0.5rem;
+    }
+    
+    .ad-body-button {
+        padding: 0.875rem 2.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ad-body-section {
+        padding: 3rem 4%;
+    }
+    
+    .ad-body-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+    
+    .ad-body-text::before,
+    .ad-body-text::after {
+        font-size: 2.5rem;
+    }
+    
+    .ad-body-text::before {
+        top: -1rem;
+        left: 0;
+    }
+    
+    .ad-body-text::after {
+        bottom: -2rem;
+        right: 0;
+    }
+    
+    .ad-body-button {
+        padding: 0.75rem 2rem;
+        font-size: 0.95rem;
+        border-width: 2px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .ad-body-section {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    }
+    
+    .ad-body-text {
+        color: #e9ecef;
+    }
+    
+    .ad-body-text::before,
+    .ad-body-text::after {
+        color: #bdedff;
+    }
+}
+
+/* Focus states for accessibility */
+.ad-body-button:focus-visible {
+    outline: 3px solid #bdedff;
+    outline-offset: 3px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .ad-body-section::before {
+        animation: none;
+    }
+    
+    .ad-body-text,
+    .ad-body-button {
+        animation: none;
+    }
+    
+    .ad-body-button:hover {
+        transform: none;
+    }
+    
+    .ad-body-button::before {
+        display: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .ad-body-text {
+        color: #000000;
+    }
+    
+    .ad-body-button {
+        border-width: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Print styles */
+@media print {
+    .ad-body-section::before {
+        display: none;
+    }
+    
+    .ad-body-button {
+        background: #004280 !important;
+        color: #ffffff !important;
+        border: 2px solid #004280 !important;
+        box-shadow: none !important;
+    }
+}

@@ -1,0 +1,232 @@
+/* youtube.css (Enhanced Version) */
+
+/* Define global CSS variables for a refined design system */
+:root {
+  --color-primary-light: #6366f1; /* Slightly brighter purple */
+  --color-primary-dark: #4338ca;  /* Deeper indigo for contrast */
+  --color-accent: #10b981;      /* A fresh emerald accent color */
+  --color-text-light: #ffffff;
+  --color-text-dark: #1f2937;    /* Dark gray for body text */
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --spacing-unit: 0.5rem; /* 8px */
+}
+
+/* Import a clean, modern font for better readability */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap');
+
+/* Define keyframe animations for page elements */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes backgroundPan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Base container styling for the entire gallery page */
+.youtube-gallery-container {
+  min-height: 100vh;
+  /* A more vibrant, animated gradient background */
+  background: linear-gradient(270deg, #fbcfe8, #e9d5ff, #c7d2fe, #a5b4fc);
+  background-size: 800% 800%;
+  animation: backgroundPan 20s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Styling for the main content card with a frosted glass effect */
+.youtube-gallery-card {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 80rem;
+  width: 100%;
+  transition: all 500ms ease-in-out;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Styling for the main title of the gallery */
+.youtube-gallery-title {
+  font-size: 3.5rem;
+  font-weight: 900; /* Bolder for more impact */
+  color: var(--color-text-dark);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+/* Styling for the new subtitle below the main title */
+.youtube-gallery-subtitle {
+  text-align: center;
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
+
+/* Styling for the gradient text within the title */
+.youtube-gallery-title-gradient {
+  background-image: linear-gradient(to right, var(--color-primary-dark), var(--color-primary-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Grid layout for the video cards */
+.youtube-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* More fluid grid */
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Styling for each individual video card */
+.youtube-gallery-video-card {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
+  transition: all 300ms ease-in-out;
+  /* Staggered animation for each card */
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Staggered animation delay for video cards */
+.youtube-gallery-video-card:nth-child(1) { animation-delay: 0.2s; }
+.youtube-gallery-video-card:nth-child(2) { animation-delay: 0.3s; }
+.youtube-gallery-video-card:nth-child(3) { animation-delay: 0.4s; }
+.youtube-gallery-video-card:nth-child(4) { animation-delay: 0.5s; }
+
+
+/* Hover effect for individual video cards */
+.youtube-gallery-video-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-primary-light);
+}
+
+/* Wrapper to maintain 16:9 aspect ratio for the iframe */
+.youtube-gallery-iframe-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  background-color: #000;
+}
+
+/* Styling for the embedded YouTube iframe */
+.youtube-gallery-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Container for the "View More" button to center it */
+.youtube-gallery-button-wrapper {
+  text-align: center;
+  animation: fadeInUp 1s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+/* Styling for the "View More" button */
+.youtube-gallery-button {
+  display: inline-block;
+  text-decoration: none;
+  padding: 1.25rem 3rem;
+  background-image: linear-gradient(to right, var(--color-primary-dark), var(--color-primary-light));
+  color: var(--color-text-light);
+  font-weight: 700;
+  font-size: 1.125rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(67, 56, 202, 0.3);
+  outline: none;
+  border: none;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+/* Hover and focus effects for the button */
+.youtube-gallery-button:hover, .youtube-gallery-button:focus {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(67, 56, 202, 0.4);
+}
+
+/* Active (click) effect for the button */
+.youtube-gallery-button:active {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 15px rgba(67, 56, 202, 0.3);
+}
+
+/* A generic hero/header section */
+.hero-section {
+  background-color: #111827; /* Darker background for contrast */
+  min-height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  text-align: center;
+  padding: 4rem 2rem;
+  border-bottom: 4px solid var(--color-primary-dark);
+  animation: fadeIn 1s ease-in;
+}
+
+.hero-section-icon {
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-section-icon:hover {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+.hero-section-subtitle {
+  font-size: 5rem;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -0.05em;
+  background-image: linear-gradient(to right, #a5b4fc, #fbcfe8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-section-description {
+  font-size: 1.25rem;
+  max-width: 650px;
+  margin: 1rem auto 0;
+  opacity: 0.8;
+  line-height: 1.6;
+}
